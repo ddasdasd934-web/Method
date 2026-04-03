@@ -57,7 +57,7 @@ local menuMaid = Maid.new()
 
 -- Constants.
 local VERSION = "1.0.9"
-local WATERMARK_TITLE = "Lycoris"
+local WATERMARK_TITLE = "Method"
 Menu.VERSION = VERSION
 
 -- Get game name dynamically.
@@ -68,10 +68,10 @@ pcall(function()
 	gameName = productInfo.Name or "Unknown"
 end)
 
-local MENU_TITLE = "Lycoris | " .. gameName
+local MENU_TITLE = "Method | " .. gameName
 
 if LRM_UserNote then
-	MENU_TITLE = string.format("(v%s) Lycoris | %s", VERSION, gameName)
+	MENU_TITLE = string.format("(v%s) Method | %s", VERSION, gameName)
 end
 
 ---Initialize menu.

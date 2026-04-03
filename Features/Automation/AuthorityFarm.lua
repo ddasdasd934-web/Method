@@ -24,31 +24,31 @@ local InputClient = require("Game/InputClient")
 -- Maid.
 local authorityFarmMaid = Maid.new()
 
--- Services
+-- Services.
 local replicatedStorage = game:GetService("ReplicatedStorage")
 local players = game:GetService("Players")
 
+--Instances.
 local plr = players.LocalPlayer
 
 local function toCaptain(dialogue)
     local char = plr.Character or plr.CharacterAdded:Wait()
     local hrp = char:WaitForChild("HumanoidRootPart")
 
-    hrp.CFrame = CFrame.new(hrp.Position.X, 25000, hrp.Position.Z)
+    Tweening.goal("AF_TweenToAboveCaptain", CFrame.new(-7038.2333984375, 25000, 2736.71044921875), false) 
+    Tweening.wait("AF_TweenToAboveCaptain")
 
-    Tweening.goal("AF_TweenToCaptain", CFrame.new(-7038.2333984375, 25000, 2736.71044921875), true) 
-    Tweening.wait("AF_TweenToCaptain")
-
-    while Finder.pnear(Vector3.new(-7038.2333984375, 502.98504638671875, 2736.71044921875), 50) do
-        hrp.CFrame = CFrame.new(hrp.Position.X, 25000, hrp.Position.Z)
+    Logger.warn("Looking for players around captain.")
+    while Finder.pnear(Vector3.new(-7038.2333984375, 502.98504638671875, 2736.71044921875), 100) do
         task.wait()
     end
 
+	Tweening.stop("AF_TweenToAboveCaptain")
     plr:RequestStreamAroundAsync(Vector3.new(-7038.2333984375, 502.98504638671875, 2736.71044921875), 0.1)
     task.wait(0.5)
 
-    hrp.CFrame = CFrame.new(hrp.Position.X, 502.98504638671875, hrp.Position.Z)
-    task.wait(0.5)
+    Tweening.goal("AF_TweenToCaptain", CFrame.new(hrp.Position.X, 502.98504638671875, hrp.Position.Z), true)
+    Tweening.wait("AF_TweenToCaptain")
 
     local captain = workspace:WaitForChild("NPCs"):WaitForChild("Captain Trist")
     Interactions.interact(captain, dialogue, false)

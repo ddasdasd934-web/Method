@@ -137,7 +137,7 @@ function Interactions.interact(instance, actions, teleport)
 		telemetryLog(
 			"(%s) Sent dialogue action '%s' and now waiting for OnClientEvent to fire.",
 			instance.Name,
-			action.exit and "[EXIT]" or (action.choice or "N/A")
+			(action.exit and "[EXIT]") or (action.choice or "N/A"
 		)
 
 		if action.exit then

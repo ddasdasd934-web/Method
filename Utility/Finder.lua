@@ -522,5 +522,19 @@ Finder.geir = LPH_NO_VIRTUALIZE(function(range, pfilter)
 	return list
 end)
 
+Finder.destructible = LPH_NO_VIRTUALIZE(function(name)
+	local destructibles = workspace:FindFirstChild("Destructibles")
+	if not destructibles then
+		return nil
+	end
+
+	for _, child in next, destructibles:GetChildren() do
+		if not child.Name:match(name) then
+			continue
+		end
+		return child
+	end
+end)
+
 -- Return Finder module.
 return Finder

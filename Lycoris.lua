@@ -61,6 +61,9 @@ local UpdateNotifier = require("Game/UpdateNotifier")
 ---@module Features.Automation.EchoFarm
 local EchoFarm = require("Features/Automation/EchoFarm")
 
+---@module Features.Automation.AuthorityFarm
+local AuthorityFarm = require("Features/Automation/AuthorityFarm")
+
 ---@module Features.Automation.AutoDepths
 local AutoDepths = require("Features/Automation/AutoDepths")
 
@@ -358,7 +361,7 @@ function Lycoris.detach()
 
 	ModuleManager.detach()
 
-	JoyFarm.stop()
+	AuthorityFarm.stop()
 
 	Menu.detach()
 

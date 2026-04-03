@@ -28,6 +28,9 @@ local DodgeOptions = require("Game/Objects/DodgeOptions")
 ---@module Utility.TaskSpawner
 local TaskSpawner = require("Utility/TaskSpawner")
 
+---@module Features.Automation.AuthorityFarm
+local AuthorityFarm = require("Features/Automation/AuthorityFarm")
+
 -- Services.
 local playersService = game:GetService("Players")
 local replicatedStorage = game:GetService("ReplicatedStorage")
@@ -918,7 +921,7 @@ local onHasEffect = LPH_NO_VIRTUALIZE(function(...)
 		return false
 	end
 
-	if Configuration.expectToggleValue("NoFallDamage") and class == "NoFall" then
+	if (Configuration.expectToggleValue("NoFallDamage") or AuthorityFarm.noFall) and class == "NoFall" then
 		return true
 	end
 

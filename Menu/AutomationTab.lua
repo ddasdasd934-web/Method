@@ -7,9 +7,6 @@ local Logger = require("Utility/Logger")
 ---@module Features.Automation.EchoFarm
 local EchoFarm = require("Features/Automation/EchoFarm")
 
----@module Features.Automation.JoyFarm
-local JoyFarm = require("Features/Automation/JoyFarm")
-
 ---@module Game.QueuedBlocking
 local QueuedBlocking = require("Game/QueuedBlocking")
 
@@ -18,6 +15,9 @@ local KeyHandling = require("Game/KeyHandling")
 
 ---@module Features.Game.Tweening
 local Tweening = require("Features/Game/Tweening")
+
+---@module Features.Automation.AuthorityFarm
+local AuthorityFarm = require("Features/Automation/AuthorityFarm")
 
 ---Attribute section.
 ---@param groupbox table
@@ -180,16 +180,15 @@ function AutomationTab.initAutoLootSection(groupbox)
 	})
 end
 
----Initialize Joy Farm section.
+---Initialize Authority Farm section.
 ---@param groupbox table
-function AutomationTab.initJoyFarmSection(groupbox)
+function AutomationTab.initAuthorityFarmSection(groupbox)
 	groupbox:AddButton({
-		Text = "Start Joy Farm",
-		Tooltip = "Make sure that you are at the start of a cycle.",
-		Func = JoyFarm.start,
+		Text = "Start Authority Farm",
+		Func = AuthorityFarm.start,
 	})
 
-	groupbox:AddButton("Stop Joy Farm", JoyFarm.stop)
+	groupbox:AddButton("Stop Authority Farm", AuthorityFarm.stop)
 end
 
 ---Initialize Effect Automation section.
@@ -280,9 +279,9 @@ function AutomationTab.init(window)
 	AutomationTab.initAttributeSection(tab:AddDynamicGroupbox("Attribute Farm"))
 	AutomationTab.initEffectAutomation(tab:AddDynamicGroupbox("Effect Automation"))
 	AutomationTab.initAutoLootSection(tab:AddLeftGroupbox("Auto Loot"))
-
-	if game.PlaceId == 8668476218 then
-		AutomationTab.initJoyFarmSection(tab:AddLeftGroupbox("Joy Farm"))
+	
+	if game.PlaceId == 6473861193 then
+		AutomationTab.initAuthorityFarmSection(tab:AddLeftGroupbox("Authority Farm"))
 	end
 
 	if LRM_UserNote then
